@@ -1,0 +1,15 @@
+Click==7.0
+Flask==1.0.2
+Flask-Login==0.4.1
+h5py==2.8.0
+itsdangerous==1.1.0
+Jinja2==2.10
+Keras==2.2.4
+Keras-Applications==1.0.6
+Keras-Preprocessing==1.0.5
+MarkupSafe==1.1.0
+numpy==1.15.4
+PyYAML==3.13
+scipy==1.1.0
+six==1.12.0
+Werkzeug==0.14.1

@@ -1,0 +1,7 @@
+venv
+.vscode
+
+.DS_Store
+
+apple
+not_apple
