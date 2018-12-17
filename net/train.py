@@ -16,10 +16,10 @@ datagen = ImageDataGenerator(
 
 for a in ['train', 'test']:
     for i in range(16):
-        i = str(random.randint(2, 43))
-        filename = f'apple/{i.zfill(4)}.jpg'
+        i = str(random.randint(1, 42))
+        filename = f'cropped_apple/{i}.jpeg'
         print(filename)
-        img = load_img(filename, target_size=(114, 150))  # this is a PIL image
+        img = load_img(filename, target_size=(150, 150))  # this is a PIL image
         x = img_to_array(img)  # this is a Numpy array with shape (3, 150, 150)
         x = x.reshape((1,) + x.shape)  # this is a Numpy array with shape (1, 3, 150, 150)
 
@@ -33,7 +33,7 @@ for a in ['train', 'test']:
                 break  # otherwise the generator would loop indefinitely
 
 model = Sequential()
-model.add(Conv2D(32, (3, 3), input_shape=(3, 114, 150)))
+model.add(Conv2D(32, (3, 3), input_shape=(3, 150, 150)))
 model.add(Activation('relu'))
 model.add(MaxPooling2D(pool_size=(2, 2), data_format="channels_first"))
 
@@ -70,14 +70,14 @@ test_datagen = ImageDataGenerator(rescale=1./255)
 # batches of augmented image data
 train_generator = train_datagen.flow_from_directory(
         'data/train',  # this is the target directory
-        target_size=(114, 150),  # all images will be resized to 150x150
+        target_size=(150, 150),  # all images will be resized to 150x150
         batch_size=batch_size,
         class_mode='binary')  # since we use binary_crossentropy loss, we need binary labels
 
 # this is a similar generator, for validation data
 validation_generator = test_datagen.flow_from_directory(
         'data/test',
-        target_size=(114, 150),
+        target_size=(150, 150),
         batch_size=batch_size,
         class_mode='binary')
 
