@@ -1,0 +1,45 @@
+{
+  "name": "isthis",
+  "version": "1.0.0",
+  "description": "Demo app for learning keras and nueral nets. Send image and you will get prediction if on your photo is apple or not.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "python3 main.py | npm run watch",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prd-ev/isthis.git"
+  },
+  "author": "Patryk Niedźwiedziński",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prd-ev/isthis/issues"
+  },
+  "homepage": "https://github.com/prd-ev/isthis#readme",
+  "dependencies": {
+    "install": "^0.12.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-transform-react-display-name": "^7.0.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "autoprefixer": "^9.3.1",
+    "babel-core": "^7.0.0-bridge",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "babel-preset-react": "^6.24.1",
+    "compression-webpack-plugin": "^2.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "react-test-renderer": "^16.6.0",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  }
+}

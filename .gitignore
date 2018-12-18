@@ -1,5 +1,6 @@
 venv
 .vscode
+node_modules
 
 .DS_Store
 
@@ -7,3 +8,4 @@ apple
 not_apple
 data
 cropped_apple
+static/bundle.js
