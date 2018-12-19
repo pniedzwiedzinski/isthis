@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SendImage from "./SendImage.jsx";
 
 export default class Index extends Component {
   constructor(props) {
@@ -6,6 +7,11 @@ export default class Index extends Component {
   }
 
   render() {
-    return <div>Works</div>;
+    return (
+      <>
+        <div>Worksss</div>
+        <SendImage />
+      </>
+    );
   }
 }
