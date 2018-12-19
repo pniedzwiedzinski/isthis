@@ -9,7 +9,9 @@ def index():
 @app.route('/predict/', methods=["POST"])
 def predict():
     img = request.files["image"]
-    return jsonify({"data": {"apple": 6.6, "not_apple": 93.4}})
+    resp = jsonify({"data": {"apple": 6.6, "not_apple": 93.4}})
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 
 if __name__ == "__main__":

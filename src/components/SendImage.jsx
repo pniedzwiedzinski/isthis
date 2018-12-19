@@ -8,7 +8,7 @@ export default class SendImage extends Component {
   send = event => {
     var formData = new FormData();
     formData.append("image", event.target.files[0]);
-    fetch("predict/", {
+    fetch("https://isthisapple.herokuapp.com/predict/", {
       method: "POST",
       body: formData
     })
