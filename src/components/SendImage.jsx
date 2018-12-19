@@ -3,10 +3,6 @@ import React, { Component } from "react";
 export default class SendImage extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      img: null
-    };
   }
 
   send = event => {
@@ -15,7 +11,9 @@ export default class SendImage extends Component {
     fetch("predict/", {
       method: "POST",
       body: formData
-    });
+    })
+      .then(res => res.json())
+      .then(body => this.props.setPrediction(body.data));
   };
 
   render() {

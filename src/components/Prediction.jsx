@@ -3,13 +3,16 @@ import React, { Component } from "react";
 export default class Prediction extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      img: null,
-      prediction: null
-    };
   }
 
   render() {
-    return <div>Prediction: {this.state.prediction}</div>;
+    return (
+      <div>
+        Prediction:{" "}
+        {this.props.prediction.apple > this.props.prediction.not_apple
+          ? "Apple"
+          : "Not apple"}
+      </div>
+    );
   }
 }
