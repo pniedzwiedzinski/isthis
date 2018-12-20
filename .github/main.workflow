@@ -5,5 +5,5 @@ workflow "Build front" {
 
 action "GitHub Action for npm" {
   uses = "actions/npm@e7aaefe"
-  args = "deploy"
+  args = "run deploy"
 }
