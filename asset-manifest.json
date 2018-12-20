@@ -1,11 +1,11 @@
 {
-  "main.js": "/prd-ev/isthis/static/js/main.4979895a.chunk.js",
-  "main.js.map": "/prd-ev/isthis/static/js/main.4979895a.chunk.js.map",
-  "static/js/1.cfe3ff27.chunk.js": "/prd-ev/isthis/static/js/1.cfe3ff27.chunk.js",
-  "static/js/1.cfe3ff27.chunk.js.map": "/prd-ev/isthis/static/js/1.cfe3ff27.chunk.js.map",
-  "runtime~main.js": "/prd-ev/isthis/static/js/runtime~main.56b94ec1.js",
-  "runtime~main.js.map": "/prd-ev/isthis/static/js/runtime~main.56b94ec1.js.map",
-  "index.html": "/prd-ev/isthis/index.html",
-  "precache-manifest.fc83de98c970754a0609e019eb10eab0.js": "/prd-ev/isthis/precache-manifest.fc83de98c970754a0609e019eb10eab0.js",
-  "service-worker.js": "/prd-ev/isthis/service-worker.js"
+  "main.js": "/isthis/static/js/main.4979895a.chunk.js",
+  "main.js.map": "/isthis/static/js/main.4979895a.chunk.js.map",
+  "static/js/1.7fc64628.chunk.js": "/isthis/static/js/1.7fc64628.chunk.js",
+  "static/js/1.7fc64628.chunk.js.map": "/isthis/static/js/1.7fc64628.chunk.js.map",
+  "runtime~main.js": "/isthis/static/js/runtime~main.fa9dd936.js",
+  "runtime~main.js.map": "/isthis/static/js/runtime~main.fa9dd936.js.map",
+  "index.html": "/isthis/index.html",
+  "precache-manifest.d7b1de951be880728e509b57604192b9.js": "/isthis/precache-manifest.d7b1de951be880728e509b57604192b9.js",
+  "service-worker.js": "/isthis/service-worker.js"
 }
