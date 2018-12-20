@@ -9,10 +9,10 @@ self.__precacheManifest = [
   },
   {
     "revision": "fa9dd93686a0ab6e25ea",
-    "url": "/isthis/static/js/runtime~main.fa9dd936.js"
+    "url": "/isthis/static/bundle.js"
   },
   {
-    "revision": "dc5520522203a2d28668c3c7fec94482",
+    "revision": "d3dbe81bd6d66844c0b5b56c88010b27",
     "url": "/isthis/index.html"
   }
 ];
