@@ -10,3 +10,4 @@ data
 cropped_apple
 static/bundle.js
 __pycache__/
+build

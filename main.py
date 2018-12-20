@@ -1,6 +1,8 @@
 from flask import Flask, render_template, jsonify, request, send_file
+import os
 
-app = Flask(__name__)
+templates = os.path.abspath('./public')
+app = Flask(__name__, template_folder=templates)
 
 @app.route('/')
 def index():
