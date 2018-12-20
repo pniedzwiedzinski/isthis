@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "Demo app for learning keras and nueral nets. Send image and you will get prediction if on your photo is apple or not.",
   "main": "src/index.js",
+  "homepage": "prd-ev.github.io/isthis"
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "python3 main.py | webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d deploy"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,7 @@
   },
   "homepage": "https://github.com/prd-ev/isthis#readme",
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "install": "^0.12.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
