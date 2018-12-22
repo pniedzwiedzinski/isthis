@@ -88,7 +88,8 @@
     "babel-preset-react": "^6.24.1",
     "identity-obj-proxy": "^3.0.0",
     "react-test-renderer": "^16.6.0",
-    "webpack": "4.19.1"
+    "webpack": "4.19.1",
+    "webpack-cli": "^3.1.2"
   },
   "browserslist": [
     ">0.2%",
