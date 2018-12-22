@@ -1,0 +1,49 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Sarabun";
+  color: #31616e;
+  background-color: #ecebec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 6rem;
+  justify-content: center;
+}
+
+@media (max-width: 520px) {
+  .title {
+    font-size: 4rem;
+  }
+}
+
+#image {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.camera-icon {
+  margin-top: 23%;
+  height: 50px;
+  width: 50px;
+}
+
+.button {
+  cursor: pointer;
+  font-size: 1.5rem;
+  width: 100px;
+  height: 100px;
+  background-color: #49c6ed;
+  border-radius: 50%;
+  box-shadow: 0px 3px 10px #888;
+}

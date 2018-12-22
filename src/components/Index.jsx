@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import SendImage from "./SendImage.jsx";
 import Prediction from "./Prediction.jsx";
 
+import icon from "../times-solid.svg";
+
 export default class Index extends Component {
   constructor(props) {
     super(props);
@@ -17,6 +19,12 @@ export default class Index extends Component {
     });
   };
 
+  setImg = img => {
+    this.setState({
+      img: img
+    });
+  };
+
   clearInput = () => {
     this.setState({
       prediction: null
@@ -26,13 +34,29 @@ export default class Index extends Component {
   render() {
     return (
       <>
-        <div>Is this apple?</div>
         {this.state.prediction === null ? (
-          <SendImage setPrediction={this.setPrediction} />
+          <>
+            <div>
+              <h1 className="title">
+                Is this
+                <br />
+                apple?
+              </h1>
+            </div>
+            <SendImage
+              setPrediction={this.setPrediction}
+              setImg={this.setImg}
+            />
+          </>
         ) : (
           <>
-            <Prediction prediction={this.state.prediction} />
-            <button onClick={this.clearInput}>X</button>
+            <div className="close" onClick={this.clearInput}>
+              <img src={icon} />
+            </div>
+            <Prediction
+              prediction={this.state.prediction}
+              img={this.state.img}
+            />
           </>
         )}
       </>

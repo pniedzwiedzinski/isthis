@@ -1,0 +1,74 @@
+.input-image {
+  height: 90vw;
+  width: 90vw;
+  transform: rotate(90deg);
+  object-fit: cover;
+  max-width: 80vmin;
+  max-height: 80vmin;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.result {
+  width: 90vw;
+  max-width: 80vmin;
+  margin: 10px;
+}
+
+.image-holder {
+  height: 90vw;
+  max-height: 80vmin;
+}
+
+@media screen and (min-width: 550px) {
+  .result {
+    width: 70vmin;
+    max-width: 70vw;
+  }
+
+  .image-holder {
+    height: 70vmin;
+    max-height: 70vw;
+  }
+
+  .input-image {
+    height: 70vmin;
+    width: 70vmin;
+    max-width: 70vw;
+    max-height: 70vw;
+  }
+}
+
+.prediction {
+  padding: 5%;
+  text-align: center;
+  font-size: 1.5rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0px 3px 5px #888888;
+}
+
+.apple {
+  background-color: #63f363;
+  color: #346d20;
+}
+
+.not-apple {
+  background-color: #e64276;
+  color: #762e45;
+}
+
+.close {
+  margin-top: 10px;
+  width: 10vmin;
+  height: 10vmin;
+  background-color: white;
+  box-shadow: 0px 3px 5px #888888;
+  border-radius: 5vmin;
+}
+
+.close > img {
+  width: 5vmin;
+  margin-top: 1.25vmin;
+  margin-left: 2.5vmin;
+}

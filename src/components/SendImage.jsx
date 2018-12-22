@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import camera from "../camera-solid.svg";
+
 export default class SendImage extends Component {
   constructor(props) {
     super(props);
@@ -9,12 +11,14 @@ export default class SendImage extends Component {
     }
     this.state = {
       loading: false,
-      host: host
+      host: host,
+      error: null
     };
   }
 
   send = event => {
     this.setState({ loading: true });
+    this.props.setImg(URL.createObjectURL(event.target.files[0]));
     var formData = new FormData();
     formData.append("image", event.target.files[0]);
     fetch(this.state.host + "/predict/", {
@@ -27,17 +31,47 @@ export default class SendImage extends Component {
       })
       .catch(error => {
         console.error(error);
-        this.setState({ loading: false });
+        this.setState({ loading: false, error: error });
       });
   };
 
   render() {
     return (
-      <div>
+      <div style={{ textAlign: "center" }}>
         {this.state.loading ? (
           "Loading"
         ) : (
-          <input type="file" accept="image/*" capture onChange={this.send} />
+          <>
+            <input
+              id="image"
+              type="file"
+              accept="image/*"
+              capture
+              onChange={this.send}
+            />
+            <label htmlFor="image">
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center"
+                }}
+              >
+                <div className="button">
+                  <img
+                    src={camera}
+                    className="camera-icon"
+                    alt="Take a photo"
+                  />
+                </div>
+              </div>
+            </label>
+            {this.state.error !== null ? (
+              <div style={{ color: "red", marginTop: "10px" }}>
+                {String(this.state.error)}
+              </div>
+            ) : null}
+          </>
         )}
       </div>
     );
