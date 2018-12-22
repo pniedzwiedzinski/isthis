@@ -2,7 +2,10 @@ from flask import Flask, render_template, jsonify, request, send_file
 import os
 import tensorflow as tf
 import keras
+import numpy as np
 from net.train import model
+from net.crop import crop
+from PIL import Image
 
 templates = os.path.abspath('./public')
 app = Flask(__name__, template_folder=templates, static_folder='build/static')
@@ -22,9 +25,14 @@ def index():
 
 @app.route('/predict/', methods=["POST"])
 def predict():
-    img = keras.preprocessing.image.load_img(request.files["image"])
+    img = Image.open(request.files["image"].stream)
+    cropped = crop(img)
+    img = cropped.resize((150, 150))
     arr = keras.preprocessing.image.img_to_array(img)
-    resp = jsonify({"data": {"apple": 6.6, "not_apple": 93.4}})
+    arr = np.array([arr])
+    with graph.as_default():
+        prediction = model.predict(arr)
+    resp = jsonify({"data": prediction.tolist()})
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 

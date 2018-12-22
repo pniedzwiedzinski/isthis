@@ -8,10 +8,7 @@ export default class Prediction extends Component {
   render() {
     return (
       <div>
-        Prediction:{" "}
-        {this.props.prediction.apple > this.props.prediction.not_apple
-          ? "Apple"
-          : "Not apple"}
+        Prediction: {this.props.prediction[0] == "0" ? "Apple" : "Not apple"}
       </div>
     );
   }
