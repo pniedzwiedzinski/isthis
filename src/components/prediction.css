@@ -13,6 +13,8 @@
   width: 90vw;
   max-width: 80vmin;
   margin: 10px;
+  position: relative;
+  margin-top: 7vh;
 }
 
 .image-holder {
@@ -59,15 +61,28 @@
 }
 
 .close {
-  margin-top: 10px;
+  width: 14vmin;
+  height: 14vmin;
+  background-color: #ecebec;
+  border-radius: 7vmin;
+  position: absolute;
+  z-index: 99;
+  left: -7%;
+  top: -7%;
+  display: flex;
+}
+
+.close .circle {
+  cursor: pointer;
   width: 10vmin;
   height: 10vmin;
   background-color: white;
   box-shadow: 0px 3px 5px #888888;
   border-radius: 5vmin;
+  margin: auto;
 }
 
-.close > img {
+.close > .circle > img {
   width: 5vmin;
   margin-top: 1.25vmin;
   margin-left: 2.5vmin;

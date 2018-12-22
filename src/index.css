@@ -5,7 +5,11 @@ body {
   font-family: "Sarabun";
   color: #31616e;
   background-color: #ecebec;
+}
+
+#root {
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   align-items: center;
 }
@@ -46,4 +50,29 @@ body {
   background-color: #49c6ed;
   border-radius: 50%;
   box-shadow: 0px 3px 10px #888;
+}
+
+.footer {
+  margin-bottom: 25px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer a {
+  color: inherit;
+  padding: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  background-image: linear-gradient(to bottom, #31616e 50%, #ecebec 50%);
+  background-size: 100% 200%;
+  background-position: 0 -100%;
+  transition: color 0.5s, background-position 0.5s;
+}
+
+.footer a:hover {
+  color: white;
+  text-decoration: none;
+  background-position: 0 0;
 }
