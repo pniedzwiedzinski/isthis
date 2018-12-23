@@ -1,12 +1,11 @@
 .input-image {
   height: 90vw;
   width: 90vw;
-  transform: rotate(90deg);
   object-fit: cover;
   max-width: 80vmin;
   max-height: 80vmin;
   border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .result {

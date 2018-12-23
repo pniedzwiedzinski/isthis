@@ -39,7 +39,15 @@ export default class SendImage extends Component {
     return (
       <div style={{ textAlign: "center" }}>
         {this.state.loading ? (
-          "Loading"
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div className="lds-ellipsis">
+              <div />
+              <div />
+              <div />
+              <div />
+            </div>
+            <div>Loading...</div>
+          </div>
         ) : (
           <>
             <input
