@@ -18,7 +18,10 @@ export default class SendImage extends Component {
 
   send = event => {
     this.setState({ loading: true });
-    this.props.setImg(URL.createObjectURL(event.target.files[0]));
+    this.props.setImg([
+      URL.createObjectURL(event.target.files[0]),
+      event.target.files[0]
+    ]);
     var formData = new FormData();
     formData.append("image", event.target.files[0]);
     fetch(this.state.host + "/predict/", {

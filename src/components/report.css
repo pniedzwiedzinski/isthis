@@ -1,0 +1,37 @@
+.circle-margin-report {
+  bottom: -7vmin;
+  right: -7vmin;
+}
+
+.report {
+  cursor: pointer;
+  width: 10vmin;
+  height: 10vmin;
+  background-color: white;
+  box-shadow: 0px 3px 5px #888888;
+  border-radius: 5vmin;
+  margin: auto;
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.report-cell {
+  text-align: center;
+  padding: 10px;
+}
+
+.report-cell:last-of-type {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.report-question {
+  background-color: white;
+}
+
+.clickable {
+  cursor: pointer;
+}

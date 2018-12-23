@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request, send_file
+from flask import Flask, render_template, jsonify, request, send_file, Response
 import os
 import tensorflow as tf
 import keras
@@ -33,6 +33,16 @@ def predict():
     with graph.as_default():
         prediction = model.predict(arr)
     resp = jsonify({"data": prediction.tolist()})
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
+
+@app.route('/report/', methods=["POST"])
+def report():
+    label = request.form["label"]
+    img = Image.open(request.files["image"].stream)
+    cropped = crop(img)
+    img = cropped.resize((150, 150))
+    resp = Response("Good")
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 

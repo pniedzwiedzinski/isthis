@@ -11,9 +11,8 @@
 .result {
   width: 90vw;
   max-width: 80vmin;
-  margin: 10px;
+  margin: auto;
   position: relative;
-  margin-top: 7vh;
 }
 
 .image-holder {
@@ -46,7 +45,7 @@
   font-size: 1.5rem;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  box-shadow: 0px 3px 5px #888888;
+  position: relative;
 }
 
 .apple {
@@ -59,19 +58,22 @@
   color: #762e45;
 }
 
-.close {
+.circle-margin {
   width: 14vmin;
   height: 14vmin;
   background-color: #ecebec;
   border-radius: 7vmin;
   position: absolute;
   z-index: 99;
-  left: -7%;
-  top: -7%;
   display: flex;
 }
 
-.close .circle {
+.circle-margin-close {
+  left: -7vmin;
+  top: -7vmin;
+}
+
+.circle-margin .close {
   cursor: pointer;
   width: 10vmin;
   height: 10vmin;
@@ -81,7 +83,7 @@
   margin: auto;
 }
 
-.close > .circle > img {
+.circle-margin > .close > img {
   width: 5vmin;
   margin-top: 1.25vmin;
   margin-left: 2.5vmin;

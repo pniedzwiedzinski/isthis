@@ -23,6 +23,24 @@ export default class Index extends Component {
     });
   };
 
+  sendReport = label => {
+    var formData = new FormData();
+    formData.append("label", label);
+    formData.append("image", this.state.img[1]);
+    fetch("http://127.0.0.1:5000/report/", {
+      mode: "no-cors",
+      method: "POST",
+      body: formData
+    })
+      .then(res => res.json())
+      .then(body => {
+        this.props.setPrediction(body.data);
+      })
+      .catch(error => {
+        this.setImg(this.state.img);
+      });
+  };
+
   clearInput = () => {
     this.setState({
       prediction: null
@@ -58,8 +76,9 @@ export default class Index extends Component {
           <>
             <Prediction
               prediction={this.state.prediction}
-              img={this.state.img}
+              img={this.state.img[0]}
               clear={this.clearInput}
+              report={this.sendReport}
             />
           </>
         )}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import Report from "./Report.jsx";
 import "./prediction.css";
 import icon from "../times-solid.svg";
 
@@ -7,8 +8,8 @@ export default class Prediction extends Component {
   render() {
     return (
       <div className="result">
-        <div className="close">
-          <div className="circle" onClick={this.props.clear}>
+        <div className="circle-margin circle-margin-close">
+          <div className="close" onClick={this.props.clear}>
             <img src={icon} alt="Close" />
           </div>
         </div>
@@ -16,11 +17,12 @@ export default class Prediction extends Component {
           <img src={this.props.img} className="input-image" alt="Your input" />
         </div>
         <div>
-          {this.props.prediction[0][0] === 0 ? (
-            <div className="prediction apple">Apple</div>
-          ) : (
-            <div className="prediction not-apple">Not apple</div>
-          )}
+          <Report
+            prediction={
+              this.props.prediction[0][0] === 0 ? "apple" : "not-apple"
+            }
+            report={this.props.report}
+          />
         </div>
       </div>
     );
