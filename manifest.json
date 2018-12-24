@@ -1,0 +1,11 @@
+{
+  "short_name": "🍎?",
+  "name": "Is this apple?",
+  "icons": [],
+  "start_url": "/",
+  "background_color": "#ecebec",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#31616e",
+  "orientation": "landscape"
+}
