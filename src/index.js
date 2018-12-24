@@ -8,7 +8,7 @@ import AppleOrNot from "./components/AppleOrNot.jsx";
 import "./index.css";
 
 ReactDOM.render(
-  <Router>
+  <Router basename={process.env.PUBLIC_URL}>
     <div className="container">
       <Route exact path="/" component={Index} />
       <Route path="/apple-or-not" component={AppleOrNot} />
