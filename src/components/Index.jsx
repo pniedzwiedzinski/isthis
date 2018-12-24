@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import SendImage from "./SendImage.jsx";
 import Prediction from "./Prediction.jsx";
 
@@ -64,6 +65,22 @@ export default class Index extends Component {
                 setPrediction={this.setPrediction}
                 setImg={this.setImg}
               />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  margin: "35px",
+                  marginBottom: 0
+                }}
+              >
+                <Link
+                  to="/apple-or-not/"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <div className="button-apple-or-not">🍎 or not</div>
+                </Link>
+              </div>
             </div>
             <footer className="footer">
               <p>

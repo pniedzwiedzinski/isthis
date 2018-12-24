@@ -78,7 +78,7 @@ export default class SendImage extends Component {
               </div>
             </label>
             {this.state.error !== null ? (
-              <div style={{ color: "red", marginTop: "10px" }}>
+              <div style={{ color: "red", marginTop: "10px", height: 0 }}>
                 {String(this.state.error)}
               </div>
             ) : null}
