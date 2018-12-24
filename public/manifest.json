@@ -7,5 +7,5 @@
   "display": "standalone",
   "scope": "/isthis/",
   "theme_color": "#31616e",
-  "orientation": "landscape"
+  "orientation": "portrait"
 }
