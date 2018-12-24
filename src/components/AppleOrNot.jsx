@@ -26,7 +26,10 @@ export default class AppleOrNot extends Component {
             />
           </Link>
           <h1 style={{ fontSize: "inherit", padding: 0, margin: 0 }}>
-            🍎 or not?
+            <span role="img" aria-label="apple">
+              🍎
+            </span>{" "}
+            or not?
           </h1>
         </div>
         <div className="label-area">

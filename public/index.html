@@ -5,14 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Is this apple?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#ecebec">
+    <preference name="DisallowOverscroll" value="true" />
+    <link rel="canonical" href="https://prd.github.io/isthis/" />
     <link
       href="https://fonts.googleapis.com/css?family=Sarabun"
       rel="stylesheet"
     />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div style="text-align: center ">
+          <div>Loading...</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker
+            .register("service-worker.js")
+            .then(
+              function(registration) {
+                // Registration was successful
+                console.log(
+                  "ServiceWorker registration successful with scope: ",
+                  registration.scope
+                );
+              },
+              function(err) {
+                // registration failed :(
+                console.log("ServiceWorker registration failed: ", err);
+              }
+            )
+            .catch(function(err) {
+              console.log(err);
+            });
+        });
+      } else {
+        console.log("service worker is not supported");
+      }
+    </script>
     <script src="static/bundle.js"></script>
   </body>
 </html>

@@ -78,7 +78,12 @@ export default class Index extends Component {
                   to="/apple-or-not/"
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
-                  <div className="button-apple-or-not">🍎 or not</div>
+                  <div className="button-apple-or-not">
+                    <span role="img" aria-label="apple">
+                      🍎
+                    </span>{" "}
+                    or not
+                  </div>
                 </Link>
               </div>
             </div>
