@@ -14,11 +14,27 @@ First build image
 docker build . -t isthisapple
 ```
 
-Then run container
+Then run prediction app
 
 ```bash
-docker run -it --rm -v $(pwd):/srv -p 5000:5000 isthisapple gunicorn main:app -b 0.0.0.0:5000
+docker run -d -it --rm -v $(pwd):/srv -p 5000:5000 isthisapple gunicorn main:app -b 0.0.0.0:5000
 ```
+
+And reporting app
+
+```bash
+cd learn
+docker-compose up
+```
+
+And finally start frontend server
+
+```bash
+cd ..
+npm run start
+```
+
+Now visit http://localhost:3000/
 
 ## MVP
 
@@ -31,6 +47,6 @@ Minimal viable product
 
 ## TO DO
 
-- [ ] Taking and sending photo (React)
-- [ ] Returning prediction (Flask)
+- [x] Taking and sending photo (React)
+- [x] Returning prediction (Flask)
 - [ ] Task for re-training neural net every week (Celery)

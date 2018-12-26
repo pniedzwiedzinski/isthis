@@ -8,6 +8,8 @@ apple
 not_apple
 data
 cropped_apple
+tmp
+
 static/bundle.js
 __pycache__/
 build

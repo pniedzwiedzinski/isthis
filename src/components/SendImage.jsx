@@ -82,6 +82,7 @@ export default class SendImage extends Component {
                 {String(this.state.error)}
               </div>
             ) : null}
+            {this.props.children}
           </>
         )}
       </div>

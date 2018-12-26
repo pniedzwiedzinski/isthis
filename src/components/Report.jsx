@@ -6,7 +6,9 @@ export default class Report extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      report: false
+      userLabel: null,
+      report: false,
+      canBeReported: true
     };
   }
 
@@ -16,13 +18,27 @@ export default class Report extends Component {
         <div className="report-question report-cell">What is this?</div>
         <div
           className="apple report-cell clickable"
-          onClick={() => this.props.report("apple")}
+          onClick={() => {
+            this.props.report(1);
+            this.setState({
+              report: false,
+              canBeReported: false,
+              userLabel: "apple"
+            });
+          }}
         >
           Apple
         </div>
         <div
           className="not-apple report-cell clickable"
-          onClick={() => this.props.report("not-apple")}
+          onClick={() => {
+            this.props.report(-1);
+            this.setState({
+              report: false,
+              canBeReported: false,
+              userLabel: "not-apple"
+            });
+          }}
         >
           Not apple
         </div>
@@ -36,17 +52,29 @@ export default class Report extends Component {
     } else {
       return (
         <>
-          <div className={`prediction ${this.props.prediction}`}>
-            {this.props.prediction === "apple" ? "Apple" : "Not apple"}
-          </div>
-          <div className="circle-margin circle-margin-report">
-            <div
-              className="report"
-              onClick={() => this.setState({ report: true })}
-            >
-              <p style={{ margin: "auto", fontSize: "5vmin" }}>!</p>
+          {this.state.userLabel ? (
+            <div className={`prediction ${this.state.userLabel}`}>
+              {this.state.userLabel === "apple" ? "Apple" : "Not apple"}
             </div>
-          </div>
+          ) : (
+            <div className={`prediction ${this.props.prediction}`}>
+              {this.props.prediction === "apple" ? "Apple" : "Not apple"}
+            </div>
+          )}
+          {this.state.canBeReported ? (
+            <div className="circle-margin circle-margin-report">
+              <div
+                className="report"
+                onClick={() => this.setState({ report: true })}
+              >
+                <p style={{ margin: "auto", fontSize: "5vmin" }}>!</p>
+              </div>
+            </div>
+          ) : (
+            <div style={{ margin: "10px", textAlign: "center" }}>
+              Thanks! <span>❤️</span>
+            </div>
+          )}
         </>
       );
     }

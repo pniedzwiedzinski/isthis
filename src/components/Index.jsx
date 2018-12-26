@@ -28,7 +28,7 @@ export default class Index extends Component {
     var formData = new FormData();
     formData.append("label", label);
     formData.append("image", this.state.img[1]);
-    fetch("http://127.0.0.1:5000/report/", {
+    fetch("http://127.0.0.1:5001/report/", {
       mode: "no-cors",
       method: "POST",
       body: formData
@@ -64,28 +64,29 @@ export default class Index extends Component {
               <SendImage
                 setPrediction={this.setPrediction}
                 setImg={this.setImg}
-              />
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  margin: "35px",
-                  marginBottom: 0
-                }}
               >
-                <Link
-                  to="/apple-or-not/"
-                  style={{ textDecoration: "none", color: "inherit" }}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    margin: "35px",
+                    marginBottom: 0
+                  }}
                 >
-                  <div className="button-apple-or-not">
-                    <span role="img" aria-label="apple">
-                      🍎
-                    </span>{" "}
-                    or not
-                  </div>
-                </Link>
-              </div>
+                  <Link
+                    to="/apple-or-not/"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    <div className="button-apple-or-not">
+                      <span role="img" aria-label="apple">
+                        🍎
+                      </span>{" "}
+                      or not
+                    </div>
+                  </Link>
+                </div>
+              </SendImage>
             </div>
             <footer className="footer">
               <p>

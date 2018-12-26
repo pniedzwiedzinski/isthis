@@ -11,5 +11,47 @@
 
 .label-area {
   margin: auto;
-  opacity: 0.5;
+}
+
+.label-image {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 5px #888888;
+}
+
+@media (min-width: 520px) {
+  .label-image {
+    width: 450px;
+  }
+  .choice {
+    width: 225px !important;
+  }
+}
+
+.choose {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  box-shadow: 0px 3px 5px #888888;
+}
+
+.choice {
+  cursor: pointer;
+  text-align: center;
+  margin: auto;
+  width: 150px;
+  box-sizing: border-box;
+  padding: 20px;
+  z-index: 2;
+}
+
+.choice:first-of-type {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.choice:last-of-type {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
