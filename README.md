@@ -1,6 +1,8 @@
 # isthis(apple)
 
-Demo app for learning keras and nueral nets. Send image and you will get prediction if on your photo is apple or not.
+Demo app for learning keras and neural nets. Send image and you will get prediction if on your photo is apple or not.
+
+[Check out demo now!](https://prd-ev.github.io/isthis/) (It may take long to load prediction, because container might be asleep 💤 ~ 1 min)
 
 #### Future
 
@@ -8,7 +10,7 @@ User can upload new training data (points). If accuracy increases all users, who
 
 ## Run
 
-First build image
+First build image 🐳
 
 ```bash
 docker build . -t isthisapple
@@ -40,8 +42,8 @@ Now visit http://localhost:3000/
 
 Minimal viable product
 
-- Can take a photo and send it to backend
-- Backend returns prediction, which is displayed
+- Can take a photo and send it to backend ✅
+- Backend returns prediction, which is displayed ✅
 - Admin can upload new training data
 - Neural net is re-trained every week
 
