@@ -1,63 +1,107 @@
-from flask import Flask, redirect, session, Response, request, send_file, jsonify
+"""This app handles reports of invalid predictions."""
+
+from flask import Flask, redirect, Response, request, send_file, jsonify
 from PIL import Image
-from flask_redis import FlaskRedis
+import redis
 import random
 import base64
 
 app = Flask(__name__)
 app.secret_key = "secret" #TODO
-app.config["REDIS_URL"] = "redis://:@redis:6379/0"
-redis_store = FlaskRedis(app)
 
-def returns(resp):
+# Redis db for reported images
+redis_store = redis.Redis(host='redis', port=6379, db=0)
+
+# Redis db for sessions
+session = redis.Redis(host='redis', port=6379, db=1)
+
+
+def add_headers(resp):
+    """This adds headers needed for cross origin fetches."""
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 
+
 @app.route('/')
 def index():
+    """Index view, redirects to frontend."""
     return redirect('https://prd-ev.github.io/isthis/')
+
 
 @app.route('/report/', methods=["POST"])
 def report_post():
+    """
+    Endpoint for reporting invalid prediction.
+    
+    Request:
+        - form["label"] - contains label that prediction should return
+        - files["image"] - original photo
+    """
     label = str(request.form["label"])
     img = Image.open(request.files["image"].stream)
+
+    # crop image to 150x150
     width, height = img.size
-    crop_rectangle = ((width - height)//2, 0, (width - height)//2 + height, height)
+    crop_rectangle = (
+        (width - height)//2,
+        0,
+        (width - height)//2 + height,
+        height)
     cropped = img.crop(crop_rectangle)
     img = cropped.resize((150, 150))
-    filename = 'tmp/' + redis_store.dbsize() + 1 + '.jpeg'
+    img = img.rotate(-90)
+
+    # save image
+    filename = 'tmp/' + str(redis_store.dbsize() + 1) + '.jpeg'
     img.save(filename)
+
+    # save to redis
     redis_store.set(filename, int(label))
-    return returns(Response())
+
+    return add_headers(Response())
+
 
 @app.route('/report/', methods=["GET"])
 def report_get():
+    """Endpoint for returning image to label."""
+
+    # Select random image
     try:
         idx = random.randint(1, redis_store.dbsize())
     except ValueError:
-        return returns("Empty dataset, report something")
-    filename = '../tmp/' + idx + '.jpeg'
-    session['idx'] = filename
+        return add_headers(Response("Empty dataset, report something"))
+
+    filename = 'tmp/' + str(idx) + '.jpeg'
+
+    # Save image id to session
+    session.set('idx', filename) #TODO: Hash session key and returns it
+
+    # Open file and encode
     with open(filename, "rb") as image_file:
         data = base64.b64encode(image_file.read())
-    print(request.headers)
-    print(session)
-    return returns(jsonify({"data": str(data)}))
 
-@app.route("/label/<label>/", methods=["POST"])
-def report_update(label):
-    print(request.headers)
-    print(session)
-    print("---------")
-    idx = session['idx']
+    return add_headers(jsonify({"data": str(data)}))
+
+
+@app.route("/label/", methods=["POST"])
+def report_update():
+    """Endpoint to send label of image."""
+
+    label = request.data
+    idx = session.get('idx')
     prev = redis_store.get(idx)
+
+    # apple = +1, not-apple = -1
     if label == "apple":
         redis_store.incr(idx)
-    else:
+    elif label == "not-apple":
         redis_store.decr(idx)
-    session['idx'] = None
-    return returns(Response(str(redis_store.get(idx)) + ' ' + str(prev)))
+
+    # Reset session
+    session.set('idx', 0)
+
+    return add_headers(Response(str(prev)+ ' ' + str(redis_store.get(idx))))
 
 
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
+    app.run(host="0.0.0.0", port=5001, debug=True)

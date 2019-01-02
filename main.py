@@ -31,6 +31,7 @@ def predict():
     crop_rectangle = ((width - height)//2, 0, (width - height)//2 + height, height)
     cropped = img.crop(crop_rectangle)
     img = cropped.resize((150, 150))
+    img = img.rotate(-90)
     arr = keras.preprocessing.image.img_to_array(img)
     arr = np.array([arr])
     with graph.as_default():

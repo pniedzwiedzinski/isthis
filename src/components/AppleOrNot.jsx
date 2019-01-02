@@ -8,7 +8,8 @@ export default class AppleOrNot extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      img: null
+      img: null,
+      loading: true
     };
   }
 
@@ -17,23 +18,28 @@ export default class AppleOrNot extends Component {
   }
 
   getPhoto = () => {
-    fetch("http://127.0.0.1:5001/report/", {})
+    fetch("http://127.0.0.1:5001/report/")
       .then(res => res.json())
       .then(image => {
-        this.setState({ img: image.data });
-      });
+        this.setState({ img: image.data, loading: false });
+      })
+      .catch(error => console.log(error));
   };
 
   label = event => {
-    fetch(
-      `http://127.0.0.1:5001/label/${event.target.getAttribute("label")}/`,
-      {
-        mode: "no-cors",
-        method: "POST",
-        credentials: "include"
-      }
-    ).then(); //this.getPhoto());
+    fetch(`http://127.0.0.1:5001/label/`, {
+      mode: "no-cors",
+      method: "POST",
+      credentials: "include",
+      body: event.target.getAttribute("label")
+    }).then(this.setState({ img: null, loading: true }));
   };
+
+  componentDidUpdate() {
+    if (this.state.loading) {
+      setTimeout(this.getPhoto(), 100);
+    }
+  }
 
   render() {
     return (
@@ -59,7 +65,7 @@ export default class AppleOrNot extends Component {
           </h1>
         </div>
         <div className="label-area">
-          {this.state.img ? (
+          {!this.state.loading ? (
             <>
               <img
                 src={"data:image/png;base64, " + this.state.img.slice(2, -1)}
