@@ -28,7 +28,7 @@ export default class Index extends Component {
     var formData = new FormData();
     formData.append("label", label);
     formData.append("image", this.state.img[1]);
-    fetch("http://127.0.0.1:5001/report/", {
+    fetch("http://pytatki-beta.pl:5001/report/", {
       mode: "no-cors",
       method: "POST",
       body: formData

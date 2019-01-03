@@ -18,7 +18,7 @@ export default class AppleOrNot extends Component {
   }
 
   getPhoto = () => {
-    fetch("http://127.0.0.1:5001/report/")
+    fetch("http://pytatki-beta.pl:5001/report/")
       .then(res => res.json())
       .then(image => {
         this.setState({ img: image.data, loading: false });
@@ -27,7 +27,7 @@ export default class AppleOrNot extends Component {
   };
 
   label = event => {
-    fetch(`http://127.0.0.1:5001/label/`, {
+    fetch(`http://pytatki-beta.pl:5001/label/`, {
       mode: "no-cors",
       method: "POST",
       credentials: "include",
@@ -37,7 +37,7 @@ export default class AppleOrNot extends Component {
 
   componentDidUpdate() {
     if (this.state.loading) {
-      setTimeout(this.getPhoto(), 100);
+      setTimeout(this.getPhoto(), 750);
     }
   }
 
