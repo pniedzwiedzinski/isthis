@@ -1,3 +1,7 @@
+"""This app returns prediction of sent photo."""
+
+__author__ = u"Patryk Niedźwiedziński"
+
 import os
 
 import keras

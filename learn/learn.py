@@ -1,10 +1,13 @@
 """This app handles reports of invalid predictions."""
 
-from flask import Flask, redirect, Response, request, send_file, jsonify
-from PIL import Image
-import redis
-import random
+__author__ = u"Patryk Niedźwiedziński"
+
 import base64
+import random
+
+import redis
+from flask import Flask, Response, jsonify, redirect, request, send_file
+from PIL import Image
 
 app = Flask(__name__)
 app.secret_key = "secret" #TODO
