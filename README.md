@@ -38,6 +38,10 @@ npm run start
 
 Now visit http://localhost:3000/
 
+## Deployment
+
+Application deploys automatically every commit on master branch on heroku. Frontend app needs to be deployed manually via `npm run deploy` (You need a write access to this repo!). Also reporting app needs to be deployed manually. 
+
 ## MVP
 
 Minimal viable product
