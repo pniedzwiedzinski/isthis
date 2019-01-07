@@ -4,6 +4,8 @@ node_modules
 
 .DS_Store
 
+learn.json
+
 apple
 not_apple
 data
