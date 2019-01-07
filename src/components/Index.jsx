@@ -7,7 +7,7 @@ import TextLink from "@bit/prdev.prdev.components.text-link";
 export default class Index extends Component {
   constructor(props) {
     super(props);
-    let host = "http://isthisapple.pytatki-beta.pl";
+    let host = "https://isthisapple.pytatki-beta.pl";
     if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
       host = "http://127.0.0.1:5001";
     }
