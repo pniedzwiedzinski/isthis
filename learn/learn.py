@@ -4,19 +4,25 @@ __author__ = u"Patryk Niedźwiedziński"
 
 import base64
 import random
+import json
 
 import redis
 from flask import Flask, Response, jsonify, redirect, request, send_file
 from PIL import Image
 
 app = Flask(__name__)
-app.secret_key = "secret" #TODO
+
+# load secret key from configuration file
+with open("../learn.json") as fp:
+    config = json.load(fp)
+    app.secret_key = config['key']
+    redis_password = config['redis']
 
 # Redis db for reported images
-redis_store = redis.Redis(host='redis', port=6379, db=0)
+redis_store = redis.Redis(host='redis', port=6379, db=0, password=redis_password)
 
 # Redis db for sessions
-session = redis.Redis(host='redis', port=6379, db=1)
+session = redis.Redis(host='redis', port=6379, db=1, password=redis_password)
 
 
 def add_headers(resp):

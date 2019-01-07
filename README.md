@@ -8,6 +8,10 @@ Demo app for learning keras and neural nets. Send image and you will get predict
 
 User can upload new training data (points). If accuracy increases all users, who uploaded photos this week will get bonus points.
 
+## Configuration
+
+‼️‼️ Change passwords in learn.json and learn/docker-compose.yml
+
 ## Run
 
 First build image 🐳
@@ -40,7 +44,7 @@ Now visit http://localhost:3000/
 
 ## Deployment
 
-Application deploys automatically every commit on master branch on heroku. Frontend app needs to be deployed manually via `npm run deploy` (You need a write access to this repo!). Also reporting app needs to be deployed manually. 
+Application deploys automatically every commit on master branch on heroku. Frontend app needs to be deployed manually via `npm run deploy` (You need a write access to this repo!). Also reporting app needs to be deployed manually.
 
 ## MVP
 

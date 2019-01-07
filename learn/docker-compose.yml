@@ -1,10 +1,13 @@
-version: "3"
+version: "2"
 services:
   redis:
-    image: redis:alpine
-    command: redis-server --appendonly yes
+    image: bitnami/redis
+    environment:
+      - REDIS_PASSWORD=change_it!!!
     volumes:
       - ./data:/data
+    ports:
+      - "6379:6379"
 
   learn:
     image: isthisapple
