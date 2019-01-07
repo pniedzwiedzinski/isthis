@@ -95,6 +95,15 @@ export default class Index extends Component {
               </SendImage>
             </div>
             <footer className="footer">
+              <div className="source">
+                <TextLink
+                  href="https://github.com/prd-ev/isthis/"
+                  color="#31616e"
+                  bgColor="#ecebec"
+                >
+                  Check out source code &lt;/&gt;
+                </TextLink>
+              </div>
               <p>
                 Made by&nbsp;
                 <TextLink
