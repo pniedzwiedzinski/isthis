@@ -7,8 +7,13 @@ import icon from "../times-solid.svg";
 export default class AppleOrNot extends Component {
   constructor(props) {
     super(props);
+    let host = "http://isthisapple.pytatki-beta.pl";
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+      host = "http://127.0.0.1:5001";
+    }
     this.state = {
       img: null,
+      host: host,
       loading: true
     };
   }
@@ -18,7 +23,7 @@ export default class AppleOrNot extends Component {
   }
 
   getPhoto = () => {
-    fetch("http://pytatki-beta.pl:5001/report/")
+    fetch(this.state.host + "/report/")
       .then(res => res.json())
       .then(image => {
         this.setState({ img: image.data, loading: false });
@@ -27,7 +32,7 @@ export default class AppleOrNot extends Component {
   };
 
   label = event => {
-    fetch(`http://pytatki-beta.pl:5001/label/`, {
+    fetch(this.state.host + "/label/", {
       mode: "no-cors",
       method: "POST",
       credentials: "include",

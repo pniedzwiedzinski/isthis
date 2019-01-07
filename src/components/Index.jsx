@@ -2,12 +2,18 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SendImage from "./SendImage.jsx";
 import Prediction from "./Prediction.jsx";
+import TextLink from "@bit/prdev.prdev.components.text-link";
 
 export default class Index extends Component {
   constructor(props) {
     super(props);
+    let host = "http://isthisapple.pytatki-beta.pl";
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+      host = "http://127.0.0.1:5001";
+    }
     this.state = {
       img: null,
+      host: host,
       prediction: null
     };
   }
@@ -28,7 +34,7 @@ export default class Index extends Component {
     var formData = new FormData();
     formData.append("label", label);
     formData.append("image", this.state.img[1]);
-    fetch("http://pytatki-beta.pl:5001/report/", {
+    fetch(this.state.host + "/report/", {
       mode: "no-cors",
       method: "POST",
       body: formData
@@ -91,7 +97,13 @@ export default class Index extends Component {
             <footer className="footer">
               <p>
                 Made by&nbsp;
-                <a href="https://prd-ev.github.io">PRDev</a>
+                <TextLink
+                  href="https://prd-ev.github.io"
+                  color="#31616e"
+                  bgColor="#ecebec"
+                >
+                  PRDev
+                </TextLink>
               </p>
             </footer>
           </>

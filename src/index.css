@@ -68,23 +68,6 @@ body {
   padding-bottom: 10px;
 }
 
-.footer a {
-  color: inherit;
-  padding: 2px;
-  margin-left: 2px;
-  margin-right: 2px;
-  background-image: linear-gradient(to bottom, #31616e 50%, #ecebec 50%);
-  background-size: 100% 200%;
-  background-position: 0 -100%;
-  transition: color 0.5s, background-position 0.5s;
-}
-
-.footer a:hover {
-  color: white;
-  text-decoration: none;
-  background-position: 0 0;
-}
-
 /* Loader */
 
 .lds-ellipsis {
