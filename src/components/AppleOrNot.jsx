@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import "./apple-or-not.css";
-import icon from "../times-solid.svg";
+import icon from "../images/times-solid.svg";
 
 export default class AppleOrNot extends Component {
   constructor(props) {
@@ -14,6 +14,7 @@ export default class AppleOrNot extends Component {
     this.state = {
       img: null,
       host: host,
+      key: null,
       loading: true
     };
   }
@@ -23,20 +24,21 @@ export default class AppleOrNot extends Component {
   }
 
   getPhoto = () => {
-    fetch(this.state.host + "/report/")
+    fetch(
+      `${this.state.host}/report/${
+        this.state.key ? `?key=${this.state.key}` : ""
+      }`
+    )
       .then(res => res.json())
       .then(image => {
-        this.setState({ img: image.data, loading: false });
+        this.setState({ img: image.data, loading: false, key: image.key });
       })
       .catch(error => console.log(error));
   };
 
-  label = event => {
-    fetch(this.state.host + "/label/", {
-      mode: "no-cors",
-      method: "POST",
-      credentials: "include",
-      body: event.target.getAttribute("label")
+  label = l => {
+    fetch(`${this.state.host}/label/?key=${this.state.key}&label=${l}`, {
+      method: "POST"
     }).then(this.setState({ img: null, loading: true }));
   };
 
@@ -79,15 +81,13 @@ export default class AppleOrNot extends Component {
               <div className="choose">
                 <div
                   className="apple choice"
-                  label="apple"
-                  onClick={this.label}
+                  onClick={e => this.label("apple")}
                 >
                   Apple
                 </div>
                 <div
                   className="not-apple choice"
-                  label="not-apple"
-                  onClick={this.label}
+                  onClick={e => this.label("not-apple")}
                 >
                   Not apple
                 </div>

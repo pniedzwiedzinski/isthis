@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Report from "./Report.jsx";
 import "./prediction.css";
-import icon from "../times-solid.svg";
+import icon from "../images/times-solid.svg";
 
 export default class Prediction extends Component {
   render() {

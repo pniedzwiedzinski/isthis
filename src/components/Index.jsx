@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 import SendImage from "./SendImage.jsx";
 import Prediction from "./Prediction.jsx";
 import TextLink from "@bit/prdev.prdev.components.text-link";
+
+import icon from "../images/user.svg";
 
 export default class Index extends Component {
   constructor(props) {
@@ -59,6 +62,17 @@ export default class Index extends Component {
       <>
         {this.state.prediction === null ? (
           <>
+            <Link to={"/login/"}>
+              <img
+                src={icon}
+                style={{
+                  position: "absolute",
+                  right: 0,
+                  margin: "30px",
+                  display: "none"
+                }}
+              />
+            </Link>
             <div style={{ flex: 1 }}>
               <div>
                 <h1 className="title">

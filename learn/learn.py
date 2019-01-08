@@ -5,6 +5,7 @@ __author__ = u"Patryk Niedźwiedziński"
 import base64
 import random
 import json
+import uuid
 
 import redis
 from flask import Flask, Response, jsonify, redirect, request, send_file
@@ -81,24 +82,34 @@ def report_get():
         return add_headers(Response("Empty dataset, report something"))
 
     filename = 'tmp/' + str(idx) + '.jpeg'
-
-    # Save image id to session
-    session.set('idx', filename) #TODO: Hash session key and returns it
-
+    
     # Open file and encode
     with open(filename, "rb") as image_file:
         data = base64.b64encode(image_file.read())
 
-    return add_headers(jsonify({"data": str(data)}))
+    # Save image id to session
+    if "key" not in request.args:
+        session_id = str(uuid.uuid4())
+    else:
+        session_id = request.args.get("key")
+
+    session.set(session_id, filename)
+
+    return add_headers(jsonify({"data": str(data), "key": session_id}))
 
 
 @app.route("/label/", methods=["POST"])
 def report_update():
     """Endpoint to send label of image."""
 
-    label = request.data
-    idx = session.get('idx')
+    valid_request = "key" in request.args and "label" in request.args
+
+    if not valid_request:
+        return add_headers(Response("Invalid request", status=400))
+
+    idx = session.get(request.args['key'])
     prev = redis_store.get(idx)
+    label = request.args['label']
 
     # apple = +1, not-apple = -1
     if label == "apple":
@@ -107,9 +118,9 @@ def report_update():
         redis_store.decr(idx)
 
     # Reset session
-    session.set('idx', 0)
+    session.set(request.args.get('key'), 0)
 
-    return add_headers(Response(str(prev)+ ' ' + str(redis_store.get(idx))))
+    return add_headers(Response(str(prev) + str(redis_store.get(idx))))
 
 
 if __name__ == "__main__":

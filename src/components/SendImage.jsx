@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import camera from "../camera-solid.svg";
+import camera from "../images/camera-solid.svg";
 
 export default class SendImage extends Component {
   constructor(props) {
