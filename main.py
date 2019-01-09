@@ -126,7 +126,9 @@ def report_get():
 
     # Select random image
     try:
-        idx = random.randint(1, redis_store.get('max'))
+        idx = random.randint(1, int(redis_store.get('max')))
+    except TypeError:
+        return add_headers(Response("DB Error, contact admin"))
     except ValueError:
         return add_headers(Response("Empty dataset, report something"))
 
