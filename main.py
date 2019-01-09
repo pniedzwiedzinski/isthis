@@ -143,7 +143,7 @@ def report_get():
     else:
         session_id = request.args.get("key")
 
-    session.set(session_id, filename)
+    session.set(session_id, 'tmp/' + filename)
 
     return add_headers(jsonify({"data": data, "key": session_id}))
 
