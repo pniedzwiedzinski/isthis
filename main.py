@@ -109,7 +109,8 @@ def report_post():
     img = cropped.resize((150, 150))
 
     # save image
-    filename = "tmp/" + str(redis_store.dbsize() + 1) + ".jpeg"
+    redis_store.incr('max')
+    filename = "tmp/" + str(redis_store.get('max')) + ".jpeg"
     img.save(filename)
     upload_file(filename)
 
@@ -125,7 +126,7 @@ def report_get():
 
     # Select random image
     try:
-        idx = random.randint(1, redis_store.dbsize())
+        idx = random.randint(1, redis_store.get('max'))
     except ValueError:
         return add_headers(Response("Empty dataset, report something"))
 
