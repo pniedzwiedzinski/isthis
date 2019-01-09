@@ -8,6 +8,8 @@ import os
 import random
 import uuid
 
+import boto3
+import botocore
 import keras
 import numpy as np
 import redis
@@ -29,13 +31,24 @@ global graph
 graph = tf.get_default_graph()
 model.load_weights("first_try.h5")
 
+s3 = boto3.client(
+    's3',
+    aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
+    aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
+    )
+
 app.secret_key = os.environ["SECRET"]
 
 # Redis db for reported images
-redis_store = redis.Redis.from_url(os.environ["REDISTOGO_URL"])
+redis_store = redis.Redis.from_url(os.environ["REDIS_APPLES_URL"])
 
 # Redis db for sessions
 session = redis.Redis.from_url(os.environ["REDIS_URL"])
+
+def upload_file(filename):
+    """This method upload given file to S3 Bucket."""
+    s3.upload_file(filename, os.environ["S3_BUCKET"], filename[4:])
+
 
 
 def add_headers(resp):
@@ -98,6 +111,7 @@ def report_post():
     # save image
     filename = "tmp/" + str(redis_store.dbsize() + 1) + ".jpeg"
     img.save(filename)
+    upload_file(filename)
 
     # save to redis
     redis_store.set(filename, int(label))
@@ -115,11 +129,10 @@ def report_get():
     except ValueError:
         return add_headers(Response("Empty dataset, report something"))
 
-    filename = "tmp/" + str(idx) + ".jpeg"
+    filename = str(idx) + ".jpeg"
     
     # Open file and encode
-    with open(filename, "rb") as image_file:
-        data = base64.b64encode(image_file.read())
+    data = 'https://' + os.environ['S3_BUCKET'] + '.s3.amazonaws.com/' + filename
 
     # Save image id to session
     if "key" not in request.args:
@@ -129,7 +142,7 @@ def report_get():
 
     session.set(session_id, filename)
 
-    return add_headers(jsonify({"data": str(data), "key": session_id}))
+    return add_headers(jsonify({"data": data, "key": session_id}))
 
 
 @app.route("/label/", methods=["POST"])

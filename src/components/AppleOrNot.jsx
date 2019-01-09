@@ -76,7 +76,7 @@ export default class AppleOrNot extends Component {
             <>
               <img
                 alt="Check internet connection!"
-                src={"data:image/png;base64, " + this.state.img.slice(2, -1)}
+                src={this.state.img}
                 className="label-image"
               />
               <div className="choose">
