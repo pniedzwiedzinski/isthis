@@ -23,7 +23,7 @@
   padding: 10px;
 }
 
-.report-cell:last-of-type {
+.report-cell:nth-of-type(3) {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }

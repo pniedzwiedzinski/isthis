@@ -42,6 +42,10 @@ export default class Report extends Component {
         >
           Not apple
         </div>
+        <div style={{ margin: "auto", textAlign: "center" }}>
+          <span>🚨</span> The image will be saved!
+          <br /> Click 'X' to abort.
+        </div>
       </>
     );
   };
