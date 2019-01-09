@@ -48,7 +48,7 @@ session = redis.Redis.from_url(os.environ["REDIS_URL"])
 def upload_file(filename):
     """This method upload given file to S3 Bucket."""
     s3.upload_file(filename, os.environ["S3_BUCKET"], filename[4:])
-
+    print("-- Uploaded {} --".format(filename))
 
 
 def add_headers(resp):
@@ -109,12 +109,12 @@ def report_post():
     img = cropped.resize((150, 150))
 
     # save image
-    redis_store.incr('max')
-    filename = "tmp/" + str(redis_store.get('max')) + ".jpeg"
+    filename = "tmp/" + str(redis_store.get('max') + 1) + ".jpeg"
     img.save(filename)
     upload_file(filename)
 
     # save to redis
+    redis_store.incr('max')
     redis_store.set(filename, int(label))
 
     return add_headers(Response())
