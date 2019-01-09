@@ -43,7 +43,10 @@ export default class Report extends Component {
           Not apple
         </div>
         <div style={{ margin: "auto", textAlign: "center" }}>
-          <span>🚨</span> The image will be saved!
+          <span role="img" aria-label="Warning!">
+            🚨
+          </span>{" "}
+          The image will be saved!
           <br /> Click 'X' to abort.
         </div>
       </>
@@ -76,7 +79,10 @@ export default class Report extends Component {
             </div>
           ) : (
             <div style={{ margin: "10px", textAlign: "center" }}>
-              Thanks! <span>❤️</span>
+              Thanks!{" "}
+              <span role="img" aria-label="love">
+                ❤️
+              </span>
             </div>
           )}
         </>

@@ -10,37 +10,17 @@ User can upload new training data (points). If accuracy increases all users, who
 
 ## Configuration
 
-‼️‼️ Change passwords in learn.json and learn/docker-compose.yml
+‼️‼️ We use docker for development. If you want to run on production server with docker change password to redis in docker-compose.yml
 
 ## Run
 
-First build image 🐳
+Run the app 🐳
 
 ```bash
-docker build . -t isthisapple
-```
-
-Then run prediction app
-
-```bash
-docker run -d -it --rm -v $(pwd):/srv -p 5000:5000 isthisapple gunicorn main:app -b 0.0.0.0:5000
-```
-
-And reporting app
-
-```bash
-cd learn
 docker-compose up
 ```
 
-And finally start frontend server
-
-```bash
-cd ..
-npm run start
-```
-
-Now visit http://localhost:3000/
+Wait for front_1 to get link to the app (should be http://localhost:3000)
 
 ## Deployment
 
@@ -52,7 +32,7 @@ Minimal viable product
 
 - Can take a photo and send it to backend ✅
 - Backend returns prediction, which is displayed ✅
-- Admin can upload new training data
+- Admin can upload new training data ✅
 - Neural net is re-trained every week
 
 ## TO DO

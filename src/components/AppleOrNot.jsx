@@ -7,9 +7,9 @@ import icon from "../images/times-solid.svg";
 export default class AppleOrNot extends Component {
   constructor(props) {
     super(props);
-    let host = "https://isthisapple.pytatki-beta.pl";
+    let host = "https://isthisapple.herokuapp.com";
     if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-      host = "http://127.0.0.1:5001";
+      host = "http://127.0.0.1:5000";
     }
     this.state = {
       img: null,
@@ -75,6 +75,7 @@ export default class AppleOrNot extends Component {
           {!this.state.loading ? (
             <>
               <img
+                alt="Check internet connection!"
                 src={"data:image/png;base64, " + this.state.img.slice(2, -1)}
                 className="label-image"
               />

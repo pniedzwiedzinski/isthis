@@ -69,11 +69,7 @@ export default class SendImage extends Component {
                 }}
               >
                 <div className="button">
-                  <img
-                    src={camera}
-                    className="camera-icon"
-                    alt="Take a photo"
-                  />
+                  <img src={camera} className="camera-icon" alt="Open camera" />
                 </div>
               </div>
             </label>

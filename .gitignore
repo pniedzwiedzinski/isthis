@@ -5,10 +5,11 @@ node_modules
 .DS_Store
 
 learn.json
+data
 
 apple
 not_apple
-data
+training_data
 cropped_apple
 tmp
 
