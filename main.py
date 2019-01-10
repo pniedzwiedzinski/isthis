@@ -164,9 +164,11 @@ def report_update():
         redis_store.decr(idx)
 
     # Reset session
+    now = redis_store.get(idx)
+    print("\033[92m-- Labeled {} from {} to {} as {}--\033[0m".format(idx, prev, now, label))
     session.set(request.args.get("key"), 0)
 
-    return add_headers(Response(str(prev) + str(redis_store.get(idx))))
+    return add_headers(Response(str(prev) + str(now)))
 
 
 if __name__ == "__main__":
