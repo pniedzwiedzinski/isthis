@@ -104,6 +104,7 @@ def report_post():
         height)
     cropped = img.crop(crop_rectangle)
     img = cropped.resize((150, 150))
+    img = img.rotate(-90)
 
     # save image
     filename = "tmp/" + str(int(redis_store.get('max')) + 1) + ".jpeg"
