@@ -31,11 +31,7 @@ global graph
 graph = tf.get_default_graph()
 model.load_weights("first_try.h5")
 
-s3 = boto3.client(
-    's3',
-    aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
-    aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
-    )
+s3 = boto3.resource('s3')
 
 app.secret_key = os.environ["SECRET"]
 
@@ -47,8 +43,8 @@ session = redis.Redis.from_url(os.environ["REDIS_URL"])
 
 def upload_file(filename):
     """This method upload given file to S3 Bucket."""
-    s3.upload_file(filename, os.environ["S3_BUCKET"], filename[4:])
-    print("-- Uploaded {} --".format(filename))
+    s3.Bucket(os.environ['S3_BUCKET']).upload_file(Filename=filename, Key=filename[4:])
+    print("\033[92m-- Uploaded {} --\033[0m".format(filename))
 
 
 def add_headers(resp):
@@ -109,7 +105,7 @@ def report_post():
     img = cropped.resize((150, 150))
 
     # save image
-    filename = "tmp/" + str(redis_store.get('max') + 1) + ".jpeg"
+    filename = "tmp/" + str(int(redis_store.get('max')) + 1) + ".jpeg"
     img.save(filename)
     upload_file(filename)
 
