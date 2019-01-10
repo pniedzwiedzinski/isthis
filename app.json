@@ -1,0 +1,28 @@
+{
+  "addons": [
+    "heroku-redis"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "description": "",
+  "env": {
+    "AWS_ACCESS_KEY_ID": "xx",
+    "AWS_SECRET_ACCESS_KEY": "xx",
+    "REDIS_APPLES_URL": "xx",
+    "REDIS_URL": "xx",
+    "S3_BUCKET": "xx",
+    "SECRET": "xx"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "isthis",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
