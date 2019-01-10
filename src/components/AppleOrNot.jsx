@@ -39,14 +39,11 @@ export default class AppleOrNot extends Component {
   label = l => {
     fetch(`${this.state.host}/label/?key=${this.state.key}&label=${l}`, {
       method: "POST"
-    }).then(this.setState({ img: null, loading: true }));
+    }).then(() => {
+      this.setState({ img: null, loading: true });
+      this.getPhoto();
+    });
   };
-
-  componentDidUpdate() {
-    if (this.state.loading) {
-      setTimeout(this.getPhoto(), 750);
-    }
-  }
 
   render() {
     return (

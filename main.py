@@ -7,6 +7,7 @@ import json
 import os
 import random
 import uuid
+import sys
 
 import boto3
 import botocore
@@ -140,6 +141,7 @@ def report_get():
         session_id = request.args.get("key")
 
     session.set(session_id, 'tmp/' + filename)
+    print("\033[92m-- User {} will label {} --\033[0m".format(session_id, filename))
 
     return add_headers(jsonify({"data": data, "key": session_id}))
 
