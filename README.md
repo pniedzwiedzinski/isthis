@@ -2,7 +2,7 @@
 
 Demo app for learning keras and neural nets. Send image and you will get prediction if on your photo is apple or not.
 
-[Check out demo now!](https://prd-ev.github.io/isthis/) (It may take long to load prediction, because container might be asleep 💤 ~ 1 min)
+[Check out demo now!](https://isthisapple.me/) (It may take long to load prediction, because container might be asleep 💤 ~ 1 min)
 
 #### Future
 
