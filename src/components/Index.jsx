@@ -122,7 +122,7 @@ export default class Index extends Component {
               <p>
                 Made by&nbsp;
                 <TextLink
-                  href="https://prd-ev.github.io"
+                  href="https://github.com/pniedzwiedzinski"
                   color="#31616e"
                   bgColor="#ecebec"
                 >
