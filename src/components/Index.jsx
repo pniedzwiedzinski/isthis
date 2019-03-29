@@ -126,7 +126,7 @@ export default class Index extends Component {
                   color="#31616e"
                   bgColor="#ecebec"
                 >
-                  PRDev
+                  Patryk Niedźwiedziński
                 </TextLink>
               </p>
             </footer>
