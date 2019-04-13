@@ -56,7 +56,7 @@ def add_headers(resp):
 
 @app.route("/")
 def index():
-    return redirect("https://prd-ev.github.io/isthis/")
+    return redirect("https://isthisapple.me")
 
 
 # Prediction
