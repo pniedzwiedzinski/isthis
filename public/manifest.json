@@ -2,10 +2,10 @@
   "short_name": "🍎?",
   "name": "Is this apple?",
   "icons": [],
-  "start_url": "/isthis/",
+  "start_url": "/",
   "background_color": "#ecebec",
   "display": "standalone",
-  "scope": "/isthis/",
+  "scope": "/",
   "theme_color": "#31616e",
   "orientation": "portrait"
 }
