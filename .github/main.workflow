@@ -13,7 +13,7 @@ action "Deploy to gh-pages" {
   env = {
     BRANCH = "gh-pages"
     FOLDER = "build"
-    BUILD_SCRIPT = "npm install && npm run build"
+    BUILD_SCRIPT = "npm install -d && npm run build"
   }
   secrets = ["ACCESS_TOKEN"]
   needs = ["master branch only"]
