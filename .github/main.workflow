@@ -1,6 +1,6 @@
 workflow "Deploy to Github Pages" {
   on = "push"
-  resolves = ["Deploy to gh-pages"]
+  resolves = ["GitHub Action for npm"]
 }
 
 action "master branch only" {
@@ -8,13 +8,9 @@ action "master branch only" {
   args = "branch master"
 }
 
-action "Deploy to gh-pages" {
-  uses = "JamesIves/github-pages-deploy-action@master"
-  env = {
-    BRANCH = "gh-pages"
-    FOLDER = "build"
-    BUILD_SCRIPT = "npm install -d && npm run build"
-  }
-  secrets = ["ACCESS_TOKEN"]
+action "GitHub Action for npm" {
+  uses = "actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680"
   needs = ["master branch only"]
+  secrets = ["GITHUB_TOKEN"]
+  runs = "npm run install && npm run deploy"
 }
