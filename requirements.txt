@@ -10,7 +10,7 @@ Click==7.0
 decorator==4.3.0
 defusedxml==0.6.0
 docutils==0.14
-entrypoints==0.2.3
+entrypoints==0.3
 Flask==1.0.2
 Flask-Redis==0.3.0
 gast==0.2.0
