@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Demo app for learning keras and nueral nets. Send image and you will get prediction if on your photo is apple or not.",
   "main": "src/index.js",
-  "homepage": "https://isthisapple.me/",
+  "homepage": "https://pniedzwiedzinski.github.io/isthis",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
