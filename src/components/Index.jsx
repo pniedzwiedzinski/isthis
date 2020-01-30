@@ -112,7 +112,7 @@ export default class Index extends Component {
             <footer className="footer">
               <div className="source">
                 <TextLink
-                  href="https://github.com/prd-ev/isthis/"
+                  href="https://github.com/pniedzwiedzinski/isthis/"
                   color="#31616e"
                   bgColor="#ecebec"
                 >
